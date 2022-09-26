@@ -3,26 +3,30 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+import Button from '@mui/material/Button';
 
 export default function Appbar() {
+  // export default function AppBar({childToParent}) {
+
+  const reset=(e)=>{
+    e.preventDefault()
+    fetch("http://localhost:8080/elevator/reset",{
+        method:"DELETE",
+        headers:{"Content-Type":"application/json"},
+    }).then(()=>{
+        // childToParent(true)
+        window.location.reload()
+    })
+  }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Elevator Application
           </Typography>
+          <Button color="inherit" onClick={reset}>Reset</Button>
         </Toolbar>
       </AppBar>
     </Box>
