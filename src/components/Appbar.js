@@ -6,16 +6,14 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
 export default function Appbar() {
-  // export default function AppBar({childToParent}) {
 
   const reset=(e)=>{
     e.preventDefault()
     fetch("http://localhost:8080/elevator/reset",{
-        method:"DELETE",
-        headers:{"Content-Type":"application/json"},
+      method:"DELETE",
+      headers:{"Content-Type":"application/json"},
     }).then(()=>{
-        // childToParent(true)
-        window.location.reload()
+      window.location.reload()
     })
   }
 

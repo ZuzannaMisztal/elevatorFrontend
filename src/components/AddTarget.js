@@ -22,18 +22,11 @@ export default function AddTarget() {
     }
 
   return (
-    <Box
-    component="form"
-    sx={{
-      '& > :not(style)': { m: 1, mx: 'auto' },
-    }}
-    noValidate
-    autoComplete="off"
-  >
-  <Container>
-      <Paper elevation={3} style={paperStyle}>
-        <h1 style={{color:"blue"}}><u>Add Target</u></h1>
-        <div>
+    <Box sx={{'& > :not(style)': { m: 1, mx: 'auto' }}}>
+      <Container>
+        <Paper elevation={3} style={paperStyle}>
+          <h1>Add Target</h1>
+          <div>
             <TextField id="outlined-basic" label="Elevator Id" variant="outlined" fullWidth 
             value={elevatorId}
             onChange={(e)=>setElevatorId(e.target.value)}
@@ -43,9 +36,9 @@ export default function AddTarget() {
             onChange={(e)=>setTarget(e.target.value)}
             />
             <Button variant="contained" color="secondary" onClick={clickAdd}>Add Target</Button>     
-        </div>
-      </Paper>
-  </Container>
-  </Box>
+          </div>
+        </Paper>
+      </Container>
+    </Box>
   );
 }

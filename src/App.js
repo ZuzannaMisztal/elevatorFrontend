@@ -1,6 +1,6 @@
 import Appbar from './components/Appbar'
 import ShowElevators from './components/ShowElevators'
-import Initialization from './components/init';
+import Initialization from './components/Initialization';
 import PickUp from './components/PickUp';
 import Step from './components/Step';
 import AddTarget from './components/AddTarget';
@@ -11,29 +11,38 @@ import React from 'react';
 
 function App() {
 
-  // const[initActive, setInitActive] = React.useState('')
+  const[showFunctionality, setShowFunctionality]=React.useState()
 
-  // const childToParent = (childdata) => {
-  //   setInitActive(childdata)
-  // }
-
-  // const parentToChild = () => {
-
-  // }
+  React.useEffect(()=>{
+    fetch("http://localhost:8080/elevator/getAll")
+    .then(res=>{
+      return res.json();
+    })
+    .then((result)=>{
+        if (result.length !== 0) {
+            setShowFunctionality(true)
+        } else {
+            setShowFunctionality(false)
+        };
+    })
+    })
 
   return (
     <div className="App">
-      {/* <Appbar childToParent={childToParent(initActive)}/>
-      <Initialization parentToChild={initActive}/> */}
       <Appbar/>
-      <Initialization/>
-      <ShowElevators/>
-      <Step/>
-      <div className='rowC'>
-      <PickUp/>
-      <AddTarget/>
-      <Update/>
-      </div>
+      { !showFunctionality ?
+        <Initialization/>
+        :
+        <div>
+          <ShowElevators/>
+          <Step/>
+          <div className='rowC'>
+            <PickUp/>
+            <AddTarget/>
+            <Update/>
+          </div>
+        </div>
+      }
     </div>
   );
 }

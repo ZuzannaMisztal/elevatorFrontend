@@ -31,30 +31,23 @@ export default function PickUp() {
         })
     }
 
-  return (
-    <Box
-    component="form"
-    sx={{
-      '& > :not(style)': { m: 1, mx: 'auto' },
-    }}
-    noValidate
-    autoComplete="off"
-  >
-  <Container>
-      <Paper elevation={3} style={paperStyle}>
-        <h1 style={{color:"blue"}}><u>Pick Me Up</u></h1>
-        <div className='rowC'>
-            <TextField id="outlined-basic" label="Floor number" variant="outlined" fullWidth 
-            value={floor}
-            onChange={(e)=>setFloor(e.target.value)}
-            />
-            <div>
-                <Button variant="contained" color="secondary" onClick={clickUp}>Up</Button>
-                <Button variant="contained" color="secondary" onClick={clickDown}>Down</Button>
-            </div>      
-        </div>
-      </Paper>
-  </Container>
-  </Box>
-  );
+    return (
+        <Box sx={{'& > :not(style)': { m: 1, mx: 'auto' }}}>
+            <Container>
+                <Paper elevation={3} style={paperStyle}>
+                    <h1>Pick Me Up</h1>
+                    <div className='rowC'>
+                        <TextField id="outlined-basic" label="Floor number" variant="outlined" fullWidth 
+                        value={floor}
+                        onChange={(e)=>setFloor(e.target.value)}
+                        />
+                        <div>
+                            <Button variant="contained" color="secondary" onClick={clickUp}>Up</Button>
+                            <Button variant="contained" color="secondary" onClick={clickDown}>Down</Button>
+                        </div>      
+                    </div>
+                </Paper>
+            </Container>
+        </Box>
+    );
 }
